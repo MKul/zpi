@@ -4,8 +4,8 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="8"
-        android:targetSdkVersion="15" />
+        android:minSdkVersion="7"
+        android:targetSdkVersion="10" />
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
 
     <application
@@ -13,7 +13,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".VideoActivity"
+            android:name=".TabHostActivity"
             android:label="@string/title_activity_video" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,6 +21,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+        <activity android:name=".VideoActivity" />
+        
+        <activity android:name=".ConfigurationActivity" />
+        
+        <activity android:name=".HelpActivity" />
     </application>
 
 </manifest>
