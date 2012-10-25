@@ -35,8 +35,9 @@ public class TabHostActivity extends TabActivity {
         helpTabSpec.setContent(helpIntent);
  
         // Adding all TabSpec to TabHost
+        
         tabHost.addTab(camerasTabSpec); 
-        tabHost.addTab(confTabSpec); 
+        tabHost.addTab(confTabSpec);
         tabHost.addTab(helpTabSpec); 
     }
 	
