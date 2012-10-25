@@ -1,5 +1,6 @@
 package zpi.mobiletoring;
 
+
 import io.vov.vitamio.widget.MediaController;
 import io.vov.vitamio.widget.VideoView;
 import android.app.Activity;
@@ -7,7 +8,7 @@ import android.os.Bundle;
 
 public class VideoActivity extends Activity{
 
-	private String path = "http://192.168.80.18:8080";
+	private String path = "http://192.168.80.11:8080";
 	private VideoView mVideoView;
 
 	@Override
