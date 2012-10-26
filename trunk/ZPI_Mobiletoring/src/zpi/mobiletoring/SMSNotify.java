@@ -46,7 +46,7 @@ public class SMSNotify extends BroadcastReceiver
 			Notification notification = new Notification(icon, tickerText, when);
 			CharSequence contentTitle = "Nowa wiadomoœæ SMS";
 			CharSequence contentText = sb.toString();
-			Intent notificationIntent = new Intent(context, ConfigurationActivity.class);
+			Intent notificationIntent = new Intent(context, TabHostActivity.class);
 			PendingIntent contentIntent = PendingIntent.getActivity(context, 0, notificationIntent, 0);
 			notification.setLatestEventInfo(context, contentTitle, contentText, contentIntent);
 			mNotificationManager.notify(NOTIFICATION_ID_RECEIVED, notification);

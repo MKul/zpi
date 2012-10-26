@@ -21,7 +21,7 @@ public class TabHostActivity extends TabActivity {
         camerasTabSpec.setIndicator("Cameras", getResources().getDrawable(R.drawable.icon_cam_tab));
         Intent camerasIntent = new Intent(this, VideoActivity.class);
         camerasTabSpec.setContent(camerasIntent);
- 
+        
         // Tab for Songs
         TabSpec confTabSpec = tabHost.newTabSpec("Configuration");
         confTabSpec.setIndicator("Configuration", getResources().getDrawable(R.drawable.icon_conf_tab));
@@ -39,6 +39,8 @@ public class TabHostActivity extends TabActivity {
         tabHost.addTab(camerasTabSpec); 
         tabHost.addTab(confTabSpec);
         tabHost.addTab(helpTabSpec); 
+        
+        tabHost.setCurrentTabByTag("Configuration");
     }
 	
 }
