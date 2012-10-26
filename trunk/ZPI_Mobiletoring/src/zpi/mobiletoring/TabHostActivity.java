@@ -15,20 +15,19 @@ public class TabHostActivity extends TabActivity {
  
         TabHost tabHost = getTabHost();
  
-        // Tab for Photos
+        // Tab for Cameras
         TabSpec camerasTabSpec = tabHost.newTabSpec("Cameras");
-        // setting Title and Icon for the Tab
         camerasTabSpec.setIndicator("Cameras", getResources().getDrawable(R.drawable.icon_cam_tab));
         Intent camerasIntent = new Intent(this, VideoActivity.class);
         camerasTabSpec.setContent(camerasIntent);
         
-        // Tab for Songs
+        // Tab for Configuration
         TabSpec confTabSpec = tabHost.newTabSpec("Configuration");
         confTabSpec.setIndicator("Configuration", getResources().getDrawable(R.drawable.icon_conf_tab));
         Intent confIntent = new Intent(this, ConfigurationActivity.class);
         confTabSpec.setContent(confIntent);
  
-        // Tab for Videos
+        // Tab for Help
         TabSpec helpTabSpec = tabHost.newTabSpec("Help");
         helpTabSpec.setIndicator("Help", getResources().getDrawable(R.drawable.icon_help_tab));
         Intent helpIntent = new Intent(this, HelpActivity.class);
@@ -40,7 +39,7 @@ public class TabHostActivity extends TabActivity {
         tabHost.addTab(confTabSpec);
         tabHost.addTab(helpTabSpec); 
         
-        tabHost.setCurrentTabByTag("Configuration");
+        tabHost.setCurrentTabByTag("Cameras");
     }
 	
 }
