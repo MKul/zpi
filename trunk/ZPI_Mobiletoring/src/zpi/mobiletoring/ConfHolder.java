@@ -1,9 +1,15 @@
 package zpi.mobiletoring;
 
+import android.content.SharedPreferences;
+
 public final class ConfHolder {
+	
+	public static final String PREFERENCES_NAME="LastVideoPreferences";
+	
     private final static ConfHolder ourInstance = new ConfHolder();
     private String camera1="";
     private String camera2="";
+    
     public static ConfHolder getInstance() {
         return ourInstance;
     }

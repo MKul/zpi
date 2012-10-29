@@ -30,7 +30,7 @@ public class ConfigurationActivity extends Activity implements OnClickListener{
 		
 		confirmBtn.setOnClickListener(this);
 		
-		SharedPreferences adresses= getPreferences(0);
+		SharedPreferences adresses= getSharedPreferences(ConfHolder.PREFERENCES_NAME,0);
 		String host=adresses.getString("HostIp", "");
 		String port1=adresses.getString("Port1", "");
 		String port2=adresses.getString("Port2", "");
@@ -70,7 +70,7 @@ public class ConfigurationActivity extends Activity implements OnClickListener{
 			cHolder.setCamera2(fullPath2);
 			
 			//data storage
-			SharedPreferences adresses= getPreferences(0);
+			SharedPreferences adresses= getSharedPreferences(ConfHolder.PREFERENCES_NAME,0);
 			Editor editor=adresses.edit();
 			editor.putString("HostIp", hostIp);
 			editor.putString("Port1", port1);
