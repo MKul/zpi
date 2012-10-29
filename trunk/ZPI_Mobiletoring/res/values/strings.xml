@@ -1,6 +1,6 @@
 <resources>
 
-    <string name="app_name" >ZPI_Mobiletoring
+    <string name="app_name" >Mobiletoring
     </string>
 
     <string name="hello_world" >Hello world!
@@ -9,7 +9,7 @@
     <string name="menu_settings" >Settings
     </string>
 
-    <string name="title_activity_video" >VideoActivity
+    <string name="title_activity_video" >Mobiletoring
     </string>
 
     <string name="help_authors" >Autorzy</string>

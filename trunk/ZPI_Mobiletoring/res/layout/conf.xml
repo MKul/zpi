@@ -61,13 +61,13 @@
         android:layout_below="@+id/port2_lbl"
         android:ems="10"
         android:inputType="numberDecimal" />
-
+
     <Button
         android:id="@+id/confirm_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/port2_edit"
-        android:text="Confirm" />
+        android:text="Zapisz" />
 
 </RelativeLayout>

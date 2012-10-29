@@ -2,19 +2,17 @@ package zpi.mobiletoring;
 
 
 import io.vov.vitamio.MediaPlayer;
-import io.vov.vitamio.MediaPlayer.OnPreparedListener;
 import io.vov.vitamio.MediaPlayer.OnBufferingUpdateListener;
-import io.vov.vitamio.widget.MediaController;
+import io.vov.vitamio.MediaPlayer.OnPreparedListener;
 import io.vov.vitamio.widget.VideoView;
 import android.app.Activity;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ProgressBar;
 
 public class VideoActivity extends Activity implements OnClickListener{
 
@@ -24,6 +22,7 @@ public class VideoActivity extends Activity implements OnClickListener{
 	private Button cam1Btn;
 	private Button cam2Btn;
 	private ConfHolder cHolder;
+	private ProgressBar pb;
 	
 
 	@Override
@@ -58,6 +57,9 @@ public class VideoActivity extends Activity implements OnClickListener{
 	private void playPreview(String path){
 		if(path!=null){
 			
+			pb= (ProgressBar) findViewById(R.id.progress_circle);
+			pb.setVisibility(ProgressBar.VISIBLE);
+			
 			mVideoView.setVideoPath(path);		
 			/*MediaController mc=new MediaController(this);
 			mVideoView.setMediaController(mc);*/
@@ -73,6 +75,7 @@ public class VideoActivity extends Activity implements OnClickListener{
 					if(!start){
 						mp.start();
 						start=true;
+						pb.setVisibility(ProgressBar.INVISIBLE);
 					}
 				}
 			});
