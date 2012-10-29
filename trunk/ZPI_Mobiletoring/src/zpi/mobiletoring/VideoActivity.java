@@ -47,6 +47,7 @@ public class VideoActivity extends Activity implements OnClickListener{
 			ConfHolder cf=ConfHolder.getInstance();
 			cf.setCamera1("http://"+host+":"+port1);
 			cf.setCamera2("http://"+host+":"+port2);
+			playPreview("http://"+host+":"+port1);
 		}
 	}
 	
@@ -89,25 +90,14 @@ public class VideoActivity extends Activity implements OnClickListener{
 	public void onClick(View arg0) {
 		
 		if(arg0.getId() == R.id.cam1_btn){
-			
 			cHolder= ConfHolder.getInstance();
-			path1=cHolder.getCamera1();			
-			Log.i("CONF",path1);
-			
+			path1=cHolder.getCamera1();
 			playPreview(path1);
-			
 		}else if(arg0.getId() == R.id.cam2_btn){
 			cHolder= ConfHolder.getInstance();
 			path2=cHolder.getCamera2();
-			Log.i("CONF",path2);
-			
 			playPreview(path2);
-			
 		}
-		
-		
 	}
-	
-	
 
 }
