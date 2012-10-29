@@ -12,6 +12,7 @@ import android.widget.EditText;
 public class ConfigurationActivity extends Activity implements OnClickListener{
 	
 	private Button confirmBtn;
+	private ConfHolder cHolder;
 	
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
@@ -37,12 +38,12 @@ public class ConfigurationActivity extends Activity implements OnClickListener{
 			Log.i("CONF",fullPath1);
 			Log.i("CONF",fullPath2);
 			
-			Intent sendConf=new Intent(this,VideoActivity.class);
-			sendConf.putExtra("path1", fullPath1);
-			sendConf.putExtra("path2", fullPath2);
+			cHolder= ConfHolder.getInstance();
+			cHolder.setCamera1(fullPath1);
+			cHolder.setCamera2(fullPath2);
 			
 		}else{
-			
+			Log.i("UPS!","Coœ posz³o nie tak");
 		}
 		
 	}

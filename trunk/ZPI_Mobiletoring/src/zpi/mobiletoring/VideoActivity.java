@@ -25,9 +25,7 @@ public class VideoActivity extends Activity implements OnClickListener{
 		setContentView(R.layout.video_view);
 		
 		cam1Btn= (Button) findViewById(R.id.cam1_btn);
-		
 		cam2Btn= (Button) findViewById(R.id.cam2_btn);
-		
 		mVideoView = (VideoView) findViewById(R.id.surface_view);
 		
 	}
