@@ -1,9 +1,30 @@
 <resources>
 
-    <string name="app_name">ZPI_Mobiletoring</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="menu_settings">Settings</string>
-    <string name="title_activity_video">VideoActivity</string>
-    <string name="large_text">host_name_lbl</string>
+    <string name="app_name" >ZPI_Mobiletoring
+    </string>
+
+    <string name="hello_world" >Hello world!
+    </string>
+
+    <string name="menu_settings" >Settings
+    </string>
+
+    <string name="title_activity_video" >VideoActivity
+    </string>
+
+    <string name="help_authors" >Autorzy</string>
+
+    <string name="help_authors_details" >Marcin Kulisiewicz, Marcin Koralewski, Piotr Pękacz, Piotr Sabacińśki
+    </string>
+
+    <string name="help_cameras" >Kamery
+    </string><string name="help_cameras_details" >W aplikacji jest możliwość widoku z dwóch kamer. Do przełączania widoków służą przyciski Kamera 1 i Kamera 2.</string>
+
+    <string name="help_connection" >Połączenie
+    </string><string name="help_connection_details" >Aby zobaczyć podgląd z kamer, należy najpierw skonfigurować połączenie z serwerem. Wymaga to podania jego</string>
+
+    <string name="help_notifications" >Powiadomienia
+    </string><string name="help_notifications_details" >Aplikacja umożliwia otrzymywanie powiadomień w postaci wiadomości sms z informacjami o wykrytym alarmie.     </string>
+   
 
 </resources>
