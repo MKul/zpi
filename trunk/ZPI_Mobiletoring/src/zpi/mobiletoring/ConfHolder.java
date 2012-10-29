@@ -1,5 +1,6 @@
 package zpi.mobiletoring;
 
+import android.app.Activity;
 import android.content.SharedPreferences;
 
 public final class ConfHolder {
