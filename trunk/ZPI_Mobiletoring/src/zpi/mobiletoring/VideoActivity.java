@@ -48,36 +48,14 @@ public class VideoActivity extends Activity implements OnClickListener{
 			String port1=adresses.getString("Port1", "");
 			String port2=adresses.getString("Port2", "");
 			
-			if(!host.equals("")&&!port1.equals("")&&!port2.equals("")){
+			if( !host.equals("")&&( !port1.equals("")||!port2.equals("") ) ){
 				ConfHolder cf=ConfHolder.getInstance();
 				cf.setCamera1("http://"+host+":"+port1);
 				cf.setCamera2("http://"+host+":"+port2);
-				playPreview("http://"+host+":"+port1);
+				playPreview(cf.getCamera1());
 			}
 	
-			Log.i("CONF","ON CREATE DO DIASKA!");
-	}
-	
-	
-	
-	@Override
-	public void onConfigurationChanged(Configuration newConfig) {
-		// TODO Auto-generated method stub
-		super.onConfigurationChanged(newConfig);
-		//orientation 1 - portrait, 2 - landscape
-		if(newConfig.orientation==1){
-			cam1Btn.setLayoutParams(new AbsoluteLayout.LayoutParams(cam1Btn.getWidth(),cam1Btn.getHeight(),0,mVideoView.getHeight()));
-			cam2Btn.setLayoutParams(new AbsoluteLayout.LayoutParams(cam2Btn.getWidth(),cam2Btn.getHeight(),cam1Btn.getWidth(),mVideoView.getHeight()));
-		}else{
-			cam1Btn.setLayoutParams(new AbsoluteLayout.LayoutParams(cam1Btn.getWidth(),cam1Btn.getHeight(),mVideoView.getWidth(),5));
-			cam2Btn.setLayoutParams(new AbsoluteLayout.LayoutParams(cam2Btn.getWidth(),cam2Btn.getHeight(),mVideoView.getWidth(),85));
-		}
-	}
-
-
-
-	public void onResume(Bundle bnd){
-		super.onResume();
+			//Log.i("CONF","ON CREATE DO DIASKA!");
 	}
 	
 	private void playPreview(String path){
@@ -105,7 +83,7 @@ public class VideoActivity extends Activity implements OnClickListener{
 			mVideoView.setOnPreparedListener(new OnPreparedListener(){
 
 				public void onPrepared(MediaPlayer mp) {
-					Log.i("Nasz onPrepared", "Weszlo!");
+					//Log.i("Nasz onPrepared", "Weszlo!");
 					mVideoView.start();
 				}
 				
