@@ -21,14 +21,18 @@
         
         <activity
             android:name=".TabHostActivity"
-            android:label="@string/title_activity_video" >
+            android:label="@string/title_activity_video"
+            android:configChanges="orientation" >
              <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         
-        <activity android:name=".VideoActivity" />
+        <activity 
+            android:name=".VideoActivity"
+            android:configChanges="orientation"	 
+            />
         
         <activity android:name=".HelpActivity" />
         

@@ -33,7 +33,6 @@ public final class R {
         public static final int port1_lbl=0x7f060002;
         public static final int port2_edit=0x7f060005;
         public static final int port2_lbl=0x7f060004;
-        public static final int progress_circle=0x7f060012;
         public static final int surface_view=0x7f060011;
         public static final int textView1=0x7f060007;
         public static final int textView2=0x7f060009;

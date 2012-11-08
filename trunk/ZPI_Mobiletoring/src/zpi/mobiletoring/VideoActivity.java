@@ -7,12 +7,15 @@ import io.vov.vitamio.MediaPlayer.OnPreparedListener;
 import io.vov.vitamio.widget.VideoView;
 import android.app.Activity;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AbsoluteLayout;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 public class VideoActivity extends Activity implements OnClickListener{
 
@@ -27,29 +30,52 @@ public class VideoActivity extends Activity implements OnClickListener{
 
 	@Override
 	public void onCreate(Bundle icicle) {
-		super.onCreate(icicle);
-		setContentView(R.layout.video_view);
+			
+			//Toast.makeText(this, ""+onCreateCount, Toast.LENGTH_SHORT).show();
+			super.onCreate(icicle);
 		
-		cam1Btn= (Button) findViewById(R.id.cam1_btn);
-		cam1Btn.setOnClickListener(this);
-		cam2Btn= (Button) findViewById(R.id.cam2_btn);
-		cam2Btn.setOnClickListener(this);
-		mVideoView = (VideoView) findViewById(R.id.surface_view);
-		
-		SharedPreferences adresses= getSharedPreferences(ConfHolder.PREFERENCES_NAME,0);
-		
-		String host=adresses.getString("HostIp", "");
-		String port1=adresses.getString("Port1", "");
-		String port2=adresses.getString("Port2", "");
-		
-		if(!host.equals("")&&!port1.equals("")&&!port2.equals("")){
-			ConfHolder cf=ConfHolder.getInstance();
-			cf.setCamera1("http://"+host+":"+port1);
-			cf.setCamera2("http://"+host+":"+port2);
-			playPreview("http://"+host+":"+port1);
-		}
+			setContentView(R.layout.video_view);
+			
+			cam1Btn= (Button) findViewById(R.id.cam1_btn);
+			cam1Btn.setOnClickListener(this);
+			cam2Btn= (Button) findViewById(R.id.cam2_btn);
+			cam2Btn.setOnClickListener(this);
+			mVideoView = (VideoView) findViewById(R.id.surface_view);
+			
+			SharedPreferences adresses= getSharedPreferences(ConfHolder.PREFERENCES_NAME,0);
+			
+			String host=adresses.getString("HostIp", "");
+			String port1=adresses.getString("Port1", "");
+			String port2=adresses.getString("Port2", "");
+			
+			if(!host.equals("")&&!port1.equals("")&&!port2.equals("")){
+				ConfHolder cf=ConfHolder.getInstance();
+				cf.setCamera1("http://"+host+":"+port1);
+				cf.setCamera2("http://"+host+":"+port2);
+				playPreview("http://"+host+":"+port1);
+			}
+	
+			Log.i("CONF","ON CREATE DO DIASKA!");
 	}
 	
+	
+	
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+		// TODO Auto-generated method stub
+		super.onConfigurationChanged(newConfig);
+		//orientation 1 - portrait, 2 - landscape
+		if(newConfig.orientation==1){
+			cam1Btn.setLayoutParams(new AbsoluteLayout.LayoutParams(cam1Btn.getWidth(),cam1Btn.getHeight(),0,mVideoView.getHeight()));
+			cam2Btn.setLayoutParams(new AbsoluteLayout.LayoutParams(cam2Btn.getWidth(),cam2Btn.getHeight(),cam1Btn.getWidth(),mVideoView.getHeight()));
+		}else{
+			cam1Btn.setLayoutParams(new AbsoluteLayout.LayoutParams(cam1Btn.getWidth(),cam1Btn.getHeight(),mVideoView.getWidth(),5));
+			cam2Btn.setLayoutParams(new AbsoluteLayout.LayoutParams(cam2Btn.getWidth(),cam2Btn.getHeight(),mVideoView.getWidth(),85));
+		}
+	}
+
+
+
 	public void onResume(Bundle bnd){
 		super.onResume();
 	}
@@ -57,13 +83,10 @@ public class VideoActivity extends Activity implements OnClickListener{
 	private void playPreview(String path){
 		if(path!=null){
 			
-			pb= (ProgressBar) findViewById(R.id.progress_circle);
-			pb.setVisibility(ProgressBar.VISIBLE);
+			//pb= (ProgressBar) findViewById(R.id.progress_circle);
+			//pb.setVisibility(ProgressBar.VISIBLE);
 			
 			mVideoView.setVideoPath(path);		
-			/*MediaController mc=new MediaController(this);
-			mVideoView.setMediaController(mc);*/
-			
 			mVideoView.requestFocus();
 			
 			mVideoView.setKeepScreenOn(true);
@@ -75,7 +98,7 @@ public class VideoActivity extends Activity implements OnClickListener{
 					if(!start){
 						mp.start();
 						start=true;
-						pb.setVisibility(ProgressBar.INVISIBLE);
+						//pb.setVisibility(ProgressBar.INVISIBLE);
 					}
 				}
 			});
