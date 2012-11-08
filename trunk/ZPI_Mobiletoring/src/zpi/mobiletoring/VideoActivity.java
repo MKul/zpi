@@ -34,7 +34,7 @@ public class VideoActivity extends Activity implements OnClickListener{
 			//Toast.makeText(this, ""+onCreateCount, Toast.LENGTH_SHORT).show();
 			super.onCreate(icicle);
 		
-			setContentView(R.layout.video_view);
+			setContentView(R.layout.videoview);
 			
 			cam1Btn= (Button) findViewById(R.id.cam1_btn);
 			cam1Btn.setOnClickListener(this);
@@ -83,8 +83,8 @@ public class VideoActivity extends Activity implements OnClickListener{
 	private void playPreview(String path){
 		if(path!=null){
 			
-			//pb= (ProgressBar) findViewById(R.id.progress_circle);
-			//pb.setVisibility(ProgressBar.VISIBLE);
+			pb= (ProgressBar) findViewById(R.id.progress_circle);
+			pb.setVisibility(ProgressBar.VISIBLE);
 			
 			mVideoView.setVideoPath(path);		
 			mVideoView.requestFocus();
@@ -98,7 +98,7 @@ public class VideoActivity extends Activity implements OnClickListener{
 					if(!start){
 						mp.start();
 						start=true;
-						//pb.setVisibility(ProgressBar.INVISIBLE);
+						pb.setVisibility(ProgressBar.INVISIBLE);
 					}
 				}
 			});
