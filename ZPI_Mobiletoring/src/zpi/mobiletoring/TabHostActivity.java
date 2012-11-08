@@ -6,7 +6,12 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
-
+/**
+ * Glowna aktywnosc, zawierajaca menu w formie zakladek.
+ * 
+ * @author Mobiletoring Team
+ *
+ */
 public class TabHostActivity extends TabActivity {
 	
 	private Intent camerasIntent;
@@ -45,15 +50,5 @@ public class TabHostActivity extends TabActivity {
         tabHost.addTab(helpTabSpec); 
         
         tabHost.setCurrentTabByTag("Cameras");
-    }
-
-	@Override
-	public void onConfigurationChanged(Configuration newConfig) {
-		// TODO Auto-generated method stub
-		super.onConfigurationChanged(newConfig);
-
-	}
-	
-	
-	
+    }	
 }

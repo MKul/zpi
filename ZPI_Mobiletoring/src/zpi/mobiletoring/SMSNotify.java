@@ -10,7 +10,12 @@ import android.os.Bundle;
 import android.telephony.SmsMessage;
 import android.util.Log;
 import android.widget.Toast;
-
+/**
+ * Usluga dzialajaca w tle, monitoruje nadchodzace wiadomosci SMS- jesli ktoras z nich to wiadomosc z systemu 
+ * monitoringu, to przetwarza ja na wygodna w uzyciu notyfikacje dla uzytkownika.
+ * @author Mobiletoring Team
+ *
+ */
 public class SMSNotify extends BroadcastReceiver
 {
 	private static final String LOG_TAG = "SMSReceiver";
