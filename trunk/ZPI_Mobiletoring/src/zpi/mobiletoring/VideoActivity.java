@@ -1,6 +1,9 @@
 package zpi.mobiletoring;
 
 
+import java.io.File;
+import java.io.FileOutputStream;
+
 import io.vov.vitamio.MediaPlayer;
 import io.vov.vitamio.MediaPlayer.OnBufferingUpdateListener;
 import io.vov.vitamio.MediaPlayer.OnPreparedListener;
@@ -8,9 +11,13 @@ import io.vov.vitamio.widget.VideoView;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.View;
+import android.view.View.MeasureSpec;
 import android.view.View.OnClickListener;
 import android.widget.AbsoluteLayout;
 import android.widget.Button;
@@ -40,6 +47,11 @@ public class VideoActivity extends Activity implements OnClickListener{
 			super.onCreate(icicle);
 		
 			setContentView(R.layout.videoview);
+			
+			File dir = new File(Environment.getExternalStorageDirectory()+"/AlarmScreenShots");
+			if(!dir.exists()){
+        		dir.mkdir();
+        	}
 			
 			cam1Btn= (Button) findViewById(R.id.cam1_btn);
 			cam1Btn.setOnClickListener(this);
@@ -111,6 +123,43 @@ public class VideoActivity extends Activity implements OnClickListener{
 			path2=cHolder.getCamera2();
 			playPreview(path2);
 		}
+	}
+	
+	private void gettingScreenShot(){
+		
+		View content = findViewById(R.id.surface_view);
+        content.setDrawingCacheEnabled(true);
+        
+        // this is the important code :)  
+        // Without it the view will have a dimension of 0,0 and the bitmap will be null          
+        content.measure(MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED), 
+	                 MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
+        content.layout(0, 0, content.getMeasuredWidth(), content.getMeasuredHeight()); 
+	
+        content.buildDrawingCache(true);
+	    Bitmap bitmap = Bitmap.createBitmap(content.getDrawingCache());
+	    content.setDrawingCacheEnabled(false); // clear drawing cache
+
+	    
+        File file = new File(Environment.getExternalStorageDirectory()+"/AlarmScreenShots/test.png");
+        try 
+        {
+        	
+        	Toast.makeText(this, "Prepare: "+Environment.getExternalStorageDirectory()+"/AlarmScreenShots/test.png", Toast.LENGTH_LONG).show();
+            //file.createNewFile();
+            FileOutputStream ostream = new FileOutputStream(file);
+            bitmap.compress(CompressFormat.PNG, 100, ostream);
+            
+            ostream.flush();
+            ostream.close();
+            
+            Toast.makeText(this, "GET", Toast.LENGTH_LONG).show();
+        } 
+        catch (Exception e) 
+        {
+            e.printStackTrace();
+        }
+        
 	}
 
 }
