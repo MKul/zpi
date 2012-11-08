@@ -1,38 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
-
+
+    
     <Button
         android:id="@+id/cam1_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:layout_x="0dp"
+        android:layout_y="300dp"
         android:text="Kamera 1" />
-
+
     <Button
         android:id="@+id/cam2_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/cam1_btn"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:layout_x="160dp"
+        android:layout_y="300dp"
         android:text="Kamera 2" />
-
+
     <io.vov.vitamio.widget.VideoView
         android:id="@+id/surface_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/cam1_btn" />
-
-    <ProgressBar
-        android:id="@+id/progress_circle"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/surface_view"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="79dp" />
+        android:layout_width="400dp"
+        android:layout_height="300dp"
+        android:layout_x="0dp"
+        android:layout_y="0dp" />
 
-</RelativeLayout>
+</AbsoluteLayout>
