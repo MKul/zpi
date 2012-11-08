@@ -11,6 +11,12 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 
+/**
+ * Aktywnosc, zawierajaca formularz konfiguracji- tu podawana jest sciezka do strumieniujacego hosta oraz porty 
+ * dla poszczegolnych kamer.
+ * @author Mobiletoring Team
+ *
+ */
 public class ConfigurationActivity extends Activity implements OnClickListener{
 	
 	private Button confirmBtn;

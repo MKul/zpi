@@ -17,6 +17,11 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+/**
+ * Aktywnosc umozliwiajaca podglad z kamer.
+ * @author Mobiletoring Team
+ *
+ */
 public class VideoActivity extends Activity implements OnClickListener{
 
 	private String path1 = null;
@@ -58,6 +63,10 @@ public class VideoActivity extends Activity implements OnClickListener{
 			//Log.i("CONF","ON CREATE DO DIASKA!");
 	}
 	
+	/**
+	 * Metoda, wywolywana w celu odtwarzania strumienia, znajdujacego sie pod podanym adresem URL.
+	 * @param path - adres strumienia
+	 */
 	private void playPreview(String path){
 		if(path!=null){
 			
