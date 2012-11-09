@@ -3,6 +3,9 @@ package zpi.mobiletoring;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import io.vov.vitamio.MediaPlayer;
 import io.vov.vitamio.MediaPlayer.OnBufferingUpdateListener;
@@ -15,6 +18,7 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.os.Bundle;
 import android.os.Environment;
+import android.text.format.Time;
 import android.util.Log;
 import android.view.View;
 import android.view.View.MeasureSpec;
@@ -36,8 +40,10 @@ public class VideoActivity extends Activity implements OnClickListener{
 	private VideoView mVideoView;
 	private Button cam1Btn;
 	private Button cam2Btn;
+	private Button catchBtn;
 	private ConfHolder cHolder;
 	private ProgressBar pb;
+	private File dir;
 	
 
 	@Override
@@ -48,7 +54,7 @@ public class VideoActivity extends Activity implements OnClickListener{
 		
 			setContentView(R.layout.videoview);
 			
-			File dir = new File(Environment.getExternalStorageDirectory()+"/AlarmScreenShots");
+			dir = new File(Environment.getExternalStorageDirectory()+"/AlarmScreenShots");
 			if(!dir.exists()){
         		dir.mkdir();
         	}
@@ -57,6 +63,8 @@ public class VideoActivity extends Activity implements OnClickListener{
 			cam1Btn.setOnClickListener(this);
 			cam2Btn= (Button) findViewById(R.id.cam2_btn);
 			cam2Btn.setOnClickListener(this);
+			catchBtn= (Button) findViewById(R.id.catch_btn);
+			catchBtn.setOnClickListener(this);
 			mVideoView = (VideoView) findViewById(R.id.surface_view);
 			
 			SharedPreferences adresses= getSharedPreferences(ConfHolder.PREFERENCES_NAME,0);
@@ -122,12 +130,14 @@ public class VideoActivity extends Activity implements OnClickListener{
 			cHolder= ConfHolder.getInstance();
 			path2=cHolder.getCamera2();
 			playPreview(path2);
+		}else if(arg0.getId() == R.id.catch_btn){
+			gettingScreenShot();
 		}
 	}
 	
 	private void gettingScreenShot(){
 		
-		View content = findViewById(R.id.surface_view);
+		View content = findViewById(R.id.video);
         content.setDrawingCacheEnabled(true);
         
         // this is the important code :)  
@@ -140,13 +150,17 @@ public class VideoActivity extends Activity implements OnClickListener{
 	    Bitmap bitmap = Bitmap.createBitmap(content.getDrawingCache());
 	    content.setDrawingCacheEnabled(false); // clear drawing cache
 
+	    Long time=System.currentTimeMillis();
+	    Calendar cal=Calendar.getInstance();
+	    cal.setTimeInMillis(time);
+	    DateFormat df=new SimpleDateFormat("dd/MM/yyyy hh:mm:ss.SSS");
 	    
-        File file = new File(Environment.getExternalStorageDirectory()+"/AlarmScreenShots/test.png");
+        //File file = new File(dir.getPath()+"/"+df.format(cal.getTime())+".png");
+	    File file = new File(dir.getPath()+"/"+time+".png");
         try 
         {
         	
         	Toast.makeText(this, "Prepare: "+Environment.getExternalStorageDirectory()+"/AlarmScreenShots/test.png", Toast.LENGTH_LONG).show();
-            //file.createNewFile();
             FileOutputStream ostream = new FileOutputStream(file);
             bitmap.compress(CompressFormat.PNG, 100, ostream);
             
