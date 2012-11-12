@@ -75,7 +75,19 @@ public class VideoActivity extends Activity implements OnClickListener{
 				ConfHolder cf=ConfHolder.getInstance();
 				cf.setCamera1("http://"+host+":"+port1);
 				cf.setCamera2("http://"+host+":"+port2);
-				playPreview(cf.getCamera1());
+				
+				Bundle extras= getIntent().getExtras();
+				try{
+					int camNo=extras.getInt("camNo");
+					if(camNo==1){
+						playPreview(cf.getCamera1());
+					}else if(camNo==2){
+						playPreview(cf.getCamera2());
+					}
+				} catch(Exception e){
+					playPreview(cf.getCamera1());
+				}
+				
 			}
 	
 			//Log.i("CONF","ON CREATE DO DIASKA!");
@@ -131,45 +143,5 @@ public class VideoActivity extends Activity implements OnClickListener{
 		}
 	}
 	
-	private void gettingScreenShot(){
-		
-		View content = findViewById(R.id.video);
-        content.setDrawingCacheEnabled(true);
-        
-        // this is the important code :)  
-        // Without it the view will have a dimension of 0,0 and the bitmap will be null          
-        content.measure(MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED), 
-	                 MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
-        content.layout(0, 0, content.getMeasuredWidth(), content.getMeasuredHeight()); 
-	
-        content.buildDrawingCache(true);
-	    Bitmap bitmap = Bitmap.createBitmap(content.getDrawingCache());
-	    content.setDrawingCacheEnabled(false); // clear drawing cache
-
-	    Long time=System.currentTimeMillis();
-	    Calendar cal=Calendar.getInstance();
-	    cal.setTimeInMillis(time);
-	    DateFormat df=new SimpleDateFormat("dd/MM/yyyy hh:mm:ss.SSS");
-	    
-        //File file = new File(dir.getPath()+"/"+df.format(cal.getTime())+".png");
-	    File file = new File(dir.getPath()+"/"+time+".png");
-        try 
-        {
-        	
-        	Toast.makeText(this, "Prepare: "+Environment.getExternalStorageDirectory()+"/AlarmScreenShots/test.png", Toast.LENGTH_LONG).show();
-            FileOutputStream ostream = new FileOutputStream(file);
-            bitmap.compress(CompressFormat.PNG, 100, ostream);
-            
-            ostream.flush();
-            ostream.close();
-            
-            Toast.makeText(this, "GET", Toast.LENGTH_LONG).show();
-        } 
-        catch (Exception e) 
-        {
-            e.printStackTrace();
-        }
-        
-	}
 
 }
