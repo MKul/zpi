@@ -63,8 +63,6 @@ public class VideoActivity extends Activity implements OnClickListener{
 			cam1Btn.setOnClickListener(this);
 			cam2Btn= (Button) findViewById(R.id.cam2_btn);
 			cam2Btn.setOnClickListener(this);
-			catchBtn= (Button) findViewById(R.id.catch_btn);
-			catchBtn.setOnClickListener(this);
 			mVideoView = (VideoView) findViewById(R.id.surface_view);
 			
 			SharedPreferences adresses= getSharedPreferences(ConfHolder.PREFERENCES_NAME,0);
@@ -130,8 +128,6 @@ public class VideoActivity extends Activity implements OnClickListener{
 			cHolder= ConfHolder.getInstance();
 			path2=cHolder.getCamera2();
 			playPreview(path2);
-		}else if(arg0.getId() == R.id.catch_btn){
-			gettingScreenShot();
 		}
 	}
 	

@@ -26,7 +26,6 @@ public final class R {
     public static final class id {
         public static final int cam1_btn=0x7f060011;
         public static final int cam2_btn=0x7f060012;
-        public static final int catch_btn=0x7f060014;
         public static final int confirm_btn=0x7f060006;
         public static final int host_lbl=0x7f060000;
         public static final int host_name_edit=0x7f060001;
