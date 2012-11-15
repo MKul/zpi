@@ -1,5 +1,7 @@
 package zpi.mobiletoring;
 
+import java.util.regex.Pattern;
+
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -21,7 +23,11 @@ public class SMSNotify extends BroadcastReceiver
 	private static final String LOG_TAG = "SMSReceiver";
 	public static final int NOTIFICATION_ID_RECEIVED = 0x1221;
 	static final String ACTION = "android.provider.Telephony.SMS_RECEIVED";
-	static final String FROM = "+48725050832";
+	static final String REGEX1 = 
+			"^(Zdarzenie Alarmowe: Wykrycie Ruchu(Poczatek|Koniec))" +
+			" Czas rozpoczecia Alarmu: [0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}" +
+			" Nr kanalu wejscia Alarmowego: CAM([0-9]{2}) [[:print:]]+";
+
 	static final int icon = R.drawable.ic_launcher;
 	private boolean notify = false;
 	private int camNo;
@@ -39,10 +45,10 @@ public class SMSNotify extends BroadcastReceiver
 				for(Object pdu : pdus)
 				{
 					SmsMessage messages = SmsMessage.createFromPdu((byte[]) pdu);
-					if(messages.getDisplayOriginatingAddress().equals(SMSNotify.FROM))
+					String messageBody = messages.getDisplayMessageBody();
+					if(Pattern.matches(SMSNotify.REGEX1, messageBody))
 					{
 						notify = true;
-						String messageBody = messages.getDisplayMessageBody();
 						int camNoPosition = messageBody.indexOf("CAM") + 3;
 						camNo = Integer.parseInt(messageBody.substring(camNoPosition, camNoPosition+2));
 					}
