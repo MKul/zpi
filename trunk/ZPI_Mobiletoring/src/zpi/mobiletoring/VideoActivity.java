@@ -16,6 +16,7 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Environment;
 import android.text.format.Time;
@@ -44,6 +45,7 @@ public class VideoActivity extends Activity implements OnClickListener{
 	private ConfHolder cHolder;
 	private ProgressBar pb;
 	private File dir;
+	private int camNo;
 	
 
 	@Override
@@ -78,15 +80,13 @@ public class VideoActivity extends Activity implements OnClickListener{
 				cf.setCamera2("http://"+host2+":"+port2);
 				
 				Bundle extras= getIntent().getExtras();
-				try{
-					int camNo=extras.getInt("camNo");
-					if(camNo==1){
-						playPreview(cf.getCamera1());
-					}else if(camNo==2){
-						playPreview(cf.getCamera2());
-					}
-				} catch(Exception e){
+				camNo = extras.getInt("camNo",1);
+				
+				if(camNo==1){
+					
 					playPreview(cf.getCamera1());
+				}else if(camNo==2){
+					playPreview(cf.getCamera2());
 				}
 				
 			}
@@ -100,6 +100,13 @@ public class VideoActivity extends Activity implements OnClickListener{
 	 */
 	private void playPreview(String path){
 		if(path!=null){
+			if(camNo==1){
+				cam1Btn.setTextColor(Color.rgb(255, 130, 10));
+				cam2Btn.setTextColor(Color.BLACK);
+			}else if(camNo==2){
+				cam1Btn.setTextColor(Color.BLACK);
+				cam2Btn.setTextColor(Color.rgb(255, 130, 10));
+			}
 			
 			pb= (ProgressBar) findViewById(R.id.progress_circle);
 			pb.setVisibility(ProgressBar.VISIBLE);
@@ -136,10 +143,12 @@ public class VideoActivity extends Activity implements OnClickListener{
 		if(arg0.getId() == R.id.cam1_btn){
 			cHolder= ConfHolder.getInstance();
 			path1=cHolder.getCamera1();
+			camNo=1;
 			playPreview(path1);
 		}else if(arg0.getId() == R.id.cam2_btn){
 			cHolder= ConfHolder.getInstance();
 			path2=cHolder.getCamera2();
+			camNo=2;
 			playPreview(path2);
 		}
 	}

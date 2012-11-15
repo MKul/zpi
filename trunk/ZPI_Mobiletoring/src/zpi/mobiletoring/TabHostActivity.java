@@ -31,6 +31,9 @@ public class TabHostActivity extends TabActivity {
         camerasIntent = new Intent(this, VideoActivity.class);
         camerasTabSpec.setContent(camerasIntent);
         
+        int camNo=this.getIntent().getIntExtra("camNo", 1);
+        camerasIntent.putExtra("camNo", camNo);
+        
         // Tab for Configuration
         TabSpec confTabSpec = tabHost.newTabSpec("Configuration");
         confTabSpec.setIndicator("Konfiguracja", getResources().getDrawable(R.drawable.icon_conf_tab));
@@ -50,5 +53,7 @@ public class TabHostActivity extends TabActivity {
         tabHost.addTab(helpTabSpec); 
         
         tabHost.setCurrentTabByTag("Cameras");
+        
+        
     }	
 }

@@ -21,7 +21,7 @@
     </string><string name="help_cameras_details" >W aplikacji jest możliwość widoku z dwóch kamer. Do przełączania widoków służą przyciski Kamera 1 i Kamera 2.</string>
 
     <string name="help_connection" >Połączenie
-    </string><string name="help_connection_details" >Aby zobaczyć podgląd z kamer, należy najpierw skonfigurować połączenie z serwerem w zakładce Konfiguracja. Wymaga to podania jego adresu ip oraz portów 1 i 2 dla obu kamer.</string>
+    </string><string name="help_connection_details" >Aby zobaczyć podgląd z kamer, należy najpierw skonfigurować połączenie ze strumieniami wideo w zakładce Konfiguracja. Wymaga to podania ich adresów ip oraz portów dla obu kamer.</string>
 
     <string name="help_notifications" >Powiadomienia
     </string><string name="help_notifications_details" >Aplikacja umożliwia otrzymywanie powiadomień w postaci wiadomości sms z informacją o wykrytym alarmie. Aby szybko przejść do widoku podglądu z kamer wystarczy kliknąć na otrzymaną wiadomość.</string>
