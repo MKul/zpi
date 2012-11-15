@@ -67,14 +67,15 @@ public class VideoActivity extends Activity implements OnClickListener{
 			
 			SharedPreferences adresses= getSharedPreferences(ConfHolder.PREFERENCES_NAME,0);
 			
-			String host=adresses.getString("HostIp", "");
+			String host1=adresses.getString("HostIp1", "");
+			String host2=adresses.getString("HostIp2", "");
 			String port1=adresses.getString("Port1", "");
 			String port2=adresses.getString("Port2", "");
 			
-			if( !host.equals("")&&( !port1.equals("")||!port2.equals("") ) ){
+			if( (!host1.equals("")||!host2.equals(""))&&( !port1.equals("")||!port2.equals("") ) ){
 				ConfHolder cf=ConfHolder.getInstance();
-				cf.setCamera1("http://"+host+":"+port1);
-				cf.setCamera2("http://"+host+":"+port2);
+				cf.setCamera1("http://"+host1+":"+port1);
+				cf.setCamera2("http://"+host2+":"+port2);
 				
 				Bundle extras= getIntent().getExtras();
 				try{

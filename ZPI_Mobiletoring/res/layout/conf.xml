@@ -3,55 +3,75 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-
+
     <TextView
-        android:id="@+id/host_lbl"
+        android:id="@+id/host1_lbl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:text="Host:"
+        android:text="Host 1:"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <EditText
-        android:id="@+id/host_name_edit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/host_lbl"
-        android:ems="10"
-        android:inputType="textUri" >
-
-        <requestFocus />
-    </EditText>
-
-    <TextView
-        android:id="@+id/port1_lbl"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/host_name_edit"
-        android:text="Port 1:" />
-
+
     <EditText
         android:id="@+id/port1_edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/port1_lbl"
+        android:layout_below="@+id/host1_lbl"
+        android:layout_marginTop="65dp"
         android:ems="10"
         android:inputType="numberDecimal" />
-
+
+    <EditText
+        android:id="@+id/host1_name_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/host1_lbl"
+        android:ems="10"
+        android:inputType="textUri" />
+
+    <TextView
+        android:id="@+id/port1_lbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/host1_name_edit"
+        android:text="Port 1:" />
+
+    <TextView
+        android:id="@+id/host2_lbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/port1_edit"
+        android:text="Host 2:"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <EditText
+        android:id="@+id/host2_name_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/host2_lbl"
+        android:ems="10"
+        android:inputType="textUri" >
+
+        <requestFocus />
+    </EditText>
+
     <TextView
         android:id="@+id/port2_lbl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/port1_edit"
+        android:layout_below="@+id/host2_name_edit"
         android:text="Port 2:" />
-
+
     <EditText
         android:id="@+id/port2_edit"
         android:layout_width="wrap_content"
@@ -61,7 +81,7 @@
         android:layout_below="@+id/port2_lbl"
         android:ems="10"
         android:inputType="numberDecimal" />
-
+
     <Button
         android:id="@+id/confirm_btn"
         android:layout_width="wrap_content"

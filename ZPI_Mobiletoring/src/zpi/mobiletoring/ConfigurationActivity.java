@@ -21,7 +21,8 @@ public class ConfigurationActivity extends Activity implements OnClickListener{
 	
 	private Button confirmBtn;
 	private ConfHolder cHolder;
-	private EditText hostIpET;
+	private EditText host1IpET;
+	private EditText host2IpET;
 	private EditText port1ET;
 	private EditText port2ET;
 	
@@ -30,23 +31,27 @@ public class ConfigurationActivity extends Activity implements OnClickListener{
 		setContentView(R.layout.conf);
 		
 		confirmBtn= (Button) findViewById(R.id.confirm_btn);
-		hostIpET= (EditText) findViewById(R.id.host_name_edit);
+		host1IpET= (EditText) findViewById(R.id.host1_name_edit);
+		host2IpET= (EditText) findViewById(R.id.host2_name_edit);
 		port1ET= (EditText) findViewById(R.id.port1_edit);
 		port2ET= (EditText) findViewById(R.id.port2_edit);
 		
 		confirmBtn.setOnClickListener(this);
 		
 		SharedPreferences adresses= getSharedPreferences(ConfHolder.PREFERENCES_NAME,0);
-		String host=adresses.getString("HostIp", "");
+		String host1=adresses.getString("HostIp1", "");
+		String host2=adresses.getString("HostIp2", "");
 		String port1=adresses.getString("Port1", "");
 		String port2=adresses.getString("Port2", "");
 		
-		hostIpET.setText(host);
+		host1IpET.setText(host1);
+		host2IpET.setText(host2);
 		port1ET.setText(port1);
 		port2ET.setText(port2);
 		
 		
-		Log.i("CONF", "saved host:"+host);
+		Log.i("CONF", "saved host1:"+host1);
+		Log.i("CONF", "saved host2:"+host2);
 		Log.i("CONF", "saved port1:"+port1);
 		Log.i("CONF", "saved port2:"+port2);
 		
@@ -56,10 +61,11 @@ public class ConfigurationActivity extends Activity implements OnClickListener{
 		
 		if(v.getId() == R.id.confirm_btn){
 			
-			String hostIp=hostIpET.getText().toString();
+			String host1Ip=host1IpET.getText().toString();
+			String host2Ip=host2IpET.getText().toString();
 			
-			String fullPath1= "http://"+hostIp;
-			String fullPath2= "http://"+hostIp;
+			String fullPath1= "http://"+host1Ip;
+			String fullPath2= "http://"+host2Ip;
 			
 			String port1=port1ET.getText().toString();
 			String port2=port2ET.getText().toString();
@@ -78,7 +84,8 @@ public class ConfigurationActivity extends Activity implements OnClickListener{
 			//data storage
 			SharedPreferences adresses= getSharedPreferences(ConfHolder.PREFERENCES_NAME,0);
 			Editor editor=adresses.edit();
-			editor.putString("HostIp", hostIp);
+			editor.putString("HostIp1", host1Ip);
+			editor.putString("HostIp2", host2Ip);
 			editor.putString("Port1", port1);
 			editor.putString("Port2", port2);
 			editor.commit();
