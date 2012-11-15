@@ -46,12 +46,24 @@ public class SMSNotify extends BroadcastReceiver
 				{
 					SmsMessage messages = SmsMessage.createFromPdu((byte[]) pdu);
 					String messageBody = messages.getDisplayMessageBody();
+					
+					messageBody.replaceAll("(\\r|\\n)", " ");
+					char[] c = messageBody.toCharArray();
+					int pom=0;
+					for(int i=0; i<c.length; i++)
+					{
+						if((int)c[i]==10){
+							c[i]=(char)32;
+							pom++;
+						}
+					}
+					messageBody=String.valueOf(c);
+					
 					if(Pattern.matches(SMSNotify.REGEX1, messageBody))
 					{
 						notify = true;
-						//int camNoPosition = messageBody.indexOf("CAM") + 3;
-						//camNo = Integer.parseInt(messageBody.substring(camNoPosition, camNoPosition+2));
-						camNo=2;
+						int camNoPosition = messageBody.indexOf("CAM") + 3;
+						camNo = Integer.parseInt(messageBody.substring(camNoPosition+1, camNoPosition+2));
 					}
 				}
 			}
