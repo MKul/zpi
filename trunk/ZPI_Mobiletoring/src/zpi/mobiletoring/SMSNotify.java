@@ -21,7 +21,7 @@ public class SMSNotify extends BroadcastReceiver
 	private static final String LOG_TAG = "SMSReceiver";
 	public static final int NOTIFICATION_ID_RECEIVED = 0x1221;
 	static final String ACTION = "android.provider.Telephony.SMS_RECEIVED";
-	static final String FROM = "Bramka SMS";
+	static final String FROM = "+48725050832";
 	static final int icon = R.drawable.ic_launcher;
 	private boolean notify = false;
 	private int camNo;
