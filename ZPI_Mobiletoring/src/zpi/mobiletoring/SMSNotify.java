@@ -49,8 +49,9 @@ public class SMSNotify extends BroadcastReceiver
 					if(Pattern.matches(SMSNotify.REGEX1, messageBody))
 					{
 						notify = true;
-						int camNoPosition = messageBody.indexOf("CAM") + 3;
-						camNo = Integer.parseInt(messageBody.substring(camNoPosition, camNoPosition+2));
+						//int camNoPosition = messageBody.indexOf("CAM") + 3;
+						//camNo = Integer.parseInt(messageBody.substring(camNoPosition, camNoPosition+2));
+						camNo=2;
 					}
 				}
 			}
