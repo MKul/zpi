@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 /**
  * Aktywnosc, zawierajaca formularz konfiguracji- tu podawana jest sciezka do strumieniujacego hosta oraz porty 
@@ -89,6 +90,8 @@ public class ConfigurationActivity extends Activity implements OnClickListener{
 			editor.putString("Port1", port1);
 			editor.putString("Port2", port2);
 			editor.commit();
+			
+			Toast.makeText(this, "Konfiguracja zapisana", Toast.LENGTH_SHORT).show();
 			
 		}else{
 			Log.i("UPS!","Coœ posz³o nie tak");
