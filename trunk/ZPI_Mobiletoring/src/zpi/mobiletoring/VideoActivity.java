@@ -17,6 +17,7 @@ import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.Color;
+import android.media.AudioManager;
 import android.os.Bundle;
 import android.os.Environment;
 import android.text.format.Time;
@@ -53,6 +54,8 @@ public class VideoActivity extends Activity implements OnClickListener{
 			
 			//Toast.makeText(this, ""+onCreateCount, Toast.LENGTH_SHORT).show();
 			super.onCreate(icicle);
+			AudioManager am=(AudioManager)this.getSystemService(AUDIO_SERVICE);
+			am.setStreamMute(AudioManager.STREAM_MUSIC, true);
 		
 			setContentView(R.layout.videoview);
 			
