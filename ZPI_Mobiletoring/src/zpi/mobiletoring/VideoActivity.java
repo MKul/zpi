@@ -42,10 +42,8 @@ public class VideoActivity extends Activity implements OnClickListener{
 	private VideoView mVideoView;
 	private Button cam1Btn;
 	private Button cam2Btn;
-	private Button catchBtn;
 	private ConfHolder cHolder;
 	private ProgressBar pb;
-	private File dir;
 	private int camNo;
 	
 
@@ -58,12 +56,7 @@ public class VideoActivity extends Activity implements OnClickListener{
 			am.setStreamMute(AudioManager.STREAM_MUSIC, true);
 		
 			setContentView(R.layout.videoview);
-			
-			dir = new File(Environment.getExternalStorageDirectory()+"/AlarmScreenShots");
-			if(!dir.exists()){
-        		dir.mkdir();
-        	}
-			
+						
 			cam1Btn= (Button) findViewById(R.id.cam1_btn);
 			cam1Btn.setOnClickListener(this);
 			cam2Btn= (Button) findViewById(R.id.cam2_btn);
